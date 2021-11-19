@@ -1,5 +1,5 @@
 ---
-title: "Tarea 1"
+title: "resolución 1"
 author: "LUCY"
 date: "18/11/2021"
 output: github_document
@@ -48,7 +48,13 @@ sum(2^x)
 
 ##3
  El vector grupo representa al grupo al que pertenece una serie de alumnos
-#a. Â¿Cuantos elementos tiene?
+#a. ¿Cuantos elementos tiene?
+```{r}
+Datos_01 <- ("C:/Users/ERICK/OneDrive/Documentos/Nueva carpeta/ei1012-1516-la-s1-datos.RData")
+Datos_01
+grupo
+nota
+```
 
 ```{r}
 grupo
@@ -150,16 +156,20 @@ length(grupo[nota >= 4.9])/(length(nota))
 ```
 
 ##8
+
+
 ```{r}
 nota
 boxplot(nota ~ grupo)
 
 ```
 
-##9
+##9 
+Si la variable conc recoge la concentración de plomo (en ppm) en el aire de cierta zona durante un día completo
 conc
 #a
 ```{r}
+conc
 max(conc)
 
 ```
@@ -375,68 +385,3 @@ vector_rainfall180 <- rainfall_180$name
 print(vector_rainfall180)
 
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
