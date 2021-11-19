@@ -1,0 +1,442 @@
+---
+title: "Tarea 1"
+author: "LUCY"
+date: "18/11/2021"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Parte 1
+##1
+ Calcula los valores numericos aproximados de:
+ #a
+
+```{r}
+(0.3 * 0.15)/(0.3*0.15 + 0.2 * 0.8 + 0.5 * 0.12)
+```
+
+#b
+
+```{r}
+(5^6 / factorial(6)) * (exp(-5))
+```
+
+#c
+```{r}
+choose(20,7)*0.4^7*0.6^13
+```
+
+##2
+Realizar la siguiente suma:
+#a
+```{r}
+seq(1, 1000, 1)
+sum(seq(1, 1000, 1))
+
+```
+
+#b
+
+```{r}
+x <- 0:10
+2^x # suma de las potencias de 2
+sum(2^x)
+```
+
+##3
+ El vector grupo representa al grupo al que pertenece una serie de alumnos
+#a. Â¿Cuantos elementos tiene?
+
+```{r}
+grupo
+length(grupo)
+```
+
+#b ¿En que posiciones del vector esta la letra A?
+
+```{r}
+grupo
+which(grupo == "A")
+```
+
+##4
+#a ¿Cuanto suman todas las notas?
+```{r}
+nota
+sum(nota)
+```
+
+#b
+```{r}
+mean(nota)
+```
+
+#c
+```{r}
+which(nota > 7.0)
+```
+
+#d
+```{r}
+sort(nota, TRUE)
+```
+
+#e
+```{r}
+max(nota, TRUE)
+which(nota == 7.7)
+```
+
+##5
+#a Suma las notas de los 10 primeros alumnos del vector
+```{r}
+nota
+n <- nota[1:10]
+sum(n)
+
+```
+
+#b ¿Cuantos alumnos hay del grupo C
+```{r}
+d <- which(grupo == "C")
+length(d)
+```
+
+#c ¿Cuantos alumnos han aprobado?
+```{r}
+length(grupo[nota > 4.9])
+```
+
+#d  ¿Cuantos alumnos del grupo B han aprobado
+```{r}
+length(grupo[grupo == "B" & nota > 4.9])
+
+```
+
+#e ¿Que porcentaje de alumnos del grupo C han aprobado?
+```{r}
+(length(grupo[grupo == "C" & nota > 4.9]))/(length(grupo[grupo == "C"]))
+
+```
+
+#f  ¿De que grupos son la maxima y minima notas de toda la muestra? 
+```{r}
+max(grupo[nota])
+min(grupo[nota])
+
+```
+
+#g Nota media de los alumnos de grupo A y B, juntos, considerando solo a los que han aprobado.
+```{r}
+mean(nota[(grupo == "A" | grupo == "B") & nota > 4.9])
+```
+
+##6
+
+```{r}
+quantile(nota, 0.66)
+quantile(nota[grupo == "C"], 0.66)
+
+```
+
+##7
+```{r}
+length(grupo[nota <= 4.9])/(length(nota))
+length(grupo[nota >= 4.9])/(length(nota))
+
+```
+
+##8
+```{r}
+nota
+boxplot(nota ~ grupo)
+
+```
+
+##9
+conc
+#a
+```{r}
+max(conc)
+
+```
+
+#b
+```{r}
+which(conc > 40)
+length(which(conc > 40))
+```
+
+#c
+```{r}
+mean(conc)
+```
+
+#d
+```{r}
+min(conc)
+sort(conc)
+y <- sort(conc)
+y[1:10]
+```
+
+#e
+```{r}
+length(conc)
+24/288
+max(conc)
+which(conc == 47.34)
+142*0.08333333
+time(conc == 47.34)
+```
+
+Parte 2
+##1.1
+```{r}
+x <- 1:10
+y <- x^2
+plot(x,y)
+
+```
+
+##2
+
+```{r}
+c(1, 2, 3, 4, 2, 4, 6, 8, 3, 6, 9, 12)
+matrix(c(1, 2, 3, 4, 2, 4, 6, 8, 3, 6, 9, 12), 4, 3)
+
+
+```
+
+##3
+```{r}
+c(1, 0, 0, 0, 1, 0, 0, 0, 1)
+matrix(c(1, 0, 0, 0, 1, 0, 0, 0, 1), 3)
+
+```
+
+
+##4
+```{r}
+ss <- rep(0,6)
+matrix(ss, 3, 3)
+
+B <- function(n){I<-diag(n);for(i in 1:n){I[i,i]=0};return(I)}
+B
+B(4)
+```
+
+
+
+##5  Modificar la matriz diag(4), para que se parezca a la matriz B
+```{r}
+diag(4)
+d <- c(0,2,3,4)
+diag(d)
+
+```
+
+##6
+
+```{r}
+matrix(c(1, 2, 3, 4, 2, 4, 6, 8, 3, 6, 9, 12), 4, 3) # ejer 2
+
+A <- matrix(c(1, 2, 3, 4, 2, 4, 6, 8, 3, 6, 9, 12), 4, 3)
+t(A)
+
+```
+
+##7
+```{r}
+A <- matrix(c(1, 2, 3, 4, 2, 4, 6, 8, 3, 6, 9, 12, 0, 0, 0, 0), 4, 4)
+B <- matrix(c(0, 0, 0, 0, 0 ,2 ,0 ,0, 0, 0, 3, 0, 0, 0, 0, 4), 4)
+A + B
+
+A - B
+3*B # Producto por escalar
+A %*% B # Producto 
+```
+
+##8
+```{r}
+elev <- matrix(c(1,-2,1,2,4,0,3,-2,1), 3, 3)
+install.packages("expm", dependencies = TRUE)
+library(expm)
+elev%^%6
+```
+
+
+
+##9
+```{r}
+c(3,9,3,-1,-2,1,1,1,-2)
+X <- matrix(c(3,9,3,-1,-2,1,1,1,-2), 3,3)
+X
+c(-1,-9,-9)
+Y <- c(-1,-9,-9)
+Y
+S <- solve(t(X)%*%X)%*%t(X)%*%Y
+S
+```
+
+##10
+#eigen() devuelve, halla los valores y vectores propios de una matriz
+#det()        determinante..es el resultado de restar la multiplicación de los elementos de la diagonal principal con la multiplicación de los elementos de la diagonal secundaria. se obtiene dibujando una X sobre sus elementos. 
+```{r}
+help(eigen)
+
+```
+
+##11
+```{r}
+v <- 1:10
+v2 <- v*2
+v3 <- v*3
+v4 <- v*4
+v5 <- v*5
+B <- matrix(c(v, v2, v3, v4, v5), 10)
+A <- matrix(c(0,1,0,0,1,1,0,1,1,0,0,1,0,0,1,1,0,1,0,1,0,1,0,1,0),5 )
+B %*% A - B%*%t(A)
+```
+
+##12
+```{r}
+B = (x1^t.x1)^-1.(x1^t.y1)
+
+c(1,1,1,1,1,1,-1,0,1,2)
+c(0,0,1,1,3)
+x1 <- matrix(c(1,1,1,1,1,1,-1,0,1,2),nrow = 5, ncol= 2 )
+y1 <- matrix(c(0,0,1,1,3),ncol=1)
+
+((t(x1)%*%x1)^-1)%*%(t(x1)%*%y1)
+b <- ((t(x1)%*%x1)^-1)%*%(t(x1)%*%y1)
+
+```
+
+##13
+```{r}
+data(co2)
+means = aggregate(co2, FUN=mean)
+year = as.vector(time(means))
+co2 = as.vector(means)
+```
+
+#a
+```{r}
+co2
+year
+length(year)
+length(co2)
+```
+#b
+```{r}
+diff(co2)
+c(0, diff(co2))
+y <- c(0, diff(co2))
+
+y
+```
+
+#c
+```{r}
+plot(year, y, type = "o" , pch = 20, xlab = "Años", ylab = "diferencia de concentracion de co2", main ="diferencia de co2 entre años consecutivos", col = "blue", font = 2)
+
+```
+#d
+
+```{r}
+plot(year, y, xlim = c(1959, 2020), type = "o", pch =20, xlab = "diferencia de concentración de co2", main = "diferencia de co2 entre años consecutivos", col="blue", font =2)
+points(2020, 2.64, pch =4, col = "red")
+
+dife =function(x){co2[which(year == x+1)]-co2[which(year == x)]}
+dife(1959)
+for(contador in 1959:1997){ variación[contador-1958] <- print((dife(contador)))}
+
+```
+
+##14
+# Lee el archivo reinfall.csv como un data.frame
+# Calcula e imprime un vector con los nombres de las estaciones donde al menos uno de los meses tiene una precipitación superior a 180mm. 
+```{r}
+read.csv("C:/Users/ERICK/Downloads/rainfall.csv")
+
+rainfalldf <- read.csv("C:/Users/ERICK/Downloads/rainfall.csv")
+rainfalldf
+
+rainfalldf[(rainfalldf$dec > 180),]
+
+rainfall_180 <- rainfalldf[(rainfalldf$sep > 180)|(rainfalldf$oct > 180)|(rainfalldf$nov > 180)|(rainfalldf$dec > 180)|
+                             (rainfalldf$jan > 180)|(rainfalldf$feb > 180)|(rainfalldf$mar > 180)|(rainfalldf$apr > 180)|
+                             (rainfalldf$may > 180),]
+vector_rainfall180 <- rainfall_180$name
+print(vector_rainfall180)
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
